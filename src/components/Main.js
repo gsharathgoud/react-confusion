@@ -5,14 +5,6 @@ import DishDetails from "./DishDetails";
 import { DISHES } from "../shared/dishes";
 
 export default class Main extends Component {
-  componentDidMount() {
-    console.log("Main Component componentDidMount invoked");
-  }
-
-  componentDidUpdate() {
-    console.log("Main Component componentDidUpdate invoked");
-  }
-
   constructor(props) {
     super(props);
 
