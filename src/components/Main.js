@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./Menu";
 import DishDetails from "./DishDetails";
 import { DISHES } from "../shared/dishes";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default class Main extends Component {
   constructor(props) {
@@ -22,11 +23,7 @@ export default class Main extends Component {
     console.log("Main Component render invoked");
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+        <Header />
         <Menu
           dishes={this.state.dishes}
           onClick={dishId => this.onDishSelect(dishId)}
@@ -38,6 +35,7 @@ export default class Main extends Component {
             )[0]
           }
         />
+        <Footer />
       </div>
     );
   }
