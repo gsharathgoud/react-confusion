@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function RenderLeader({ props }) {
   const leaders = props.leaders.map(leader => {
     return (
-      <Media>
+      <Media key={leader.id}>
         <Media className="mr-5" href="#">
           <Media object src={leader.image} alt="Generic placeholder image" />
         </Media>
