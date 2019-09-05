@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
+import About from "./Aboutus";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
 import { LEADERS } from "../shared/leaders";
@@ -51,6 +52,10 @@ export default class Main extends Component {
         <Header />
         <Switch>
           <Route path="/home" component={Homepage} />
+          <Route
+            path="/aboutus"
+            component={() => <About leaders={this.state.leaders} />}
+          />
           <Route
             exact
             path="/menu"
