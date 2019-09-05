@@ -1,21 +1,32 @@
 import React from "react";
-import { Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText,
+  Breadcrumb,
+  BreadcrumbItem
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 function RenderDish({ dish }) {
   return (
-    <Card>
-      <CardImg width="100%" src={dish.image} alt={dish.name} />
-      <CardBody>
-        <CardTitle>{dish.name}</CardTitle>
-        <CardText>{dish.description}</CardText>
-      </CardBody>
-    </Card>
+    <div className="col-12 col-md-5 mt-1">
+      <Card>
+        <CardImg width="100%" src={dish.image} alt={dish.name} />
+        <CardBody>
+          <CardTitle>{dish.name}</CardTitle>
+          <CardText>{dish.description}</CardText>
+        </CardBody>
+      </Card>
+    </div>
   );
 }
 function RenderComments({ comments }) {
   const test = comments.map(comment => {
     return (
-      <div key={comment.id}>
+      <div className="col-12 col-md-5 mt-1" key={comment.id}>
         <li>
           <p>{comment.comment}</p>
           <p>
@@ -39,16 +50,23 @@ function RenderComments({ comments }) {
   );
 }
 const DishDetails = props => {
-  if (props.selectedDish != null) {
+  if (props.dish != null) {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-5 mt-1">
-            <RenderDish dish={props.selectedDish} />
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/menu">Menu</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="col-12">
+            <h3>{props.dish.name}</h3>
           </div>
-          <div className="col-12 col-md-5 mt-1">
-            <RenderComments comments={props.selectedDish.comments} />
-          </div>
+        </div>
+        <div className="row">
+          <RenderDish dish={props.dish} />
+          <RenderComments comments={props.comments} />
         </div>
       </div>
     );
