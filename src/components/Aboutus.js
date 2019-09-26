@@ -8,24 +8,34 @@ import {
   Media
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../shared/baseUrl";
+import Loading from "./Loading";
 
-function RenderLeader({ props }) {
-  const leaders = props.leaders.map(leader => {
-    return (
-      <Media key={leader.id}>
-        <Media className="mr-5" href="#">
-          <Media object src={leader.image} alt="Generic placeholder image" />
+function RenderLeader({ item }) {
+  if (item.leaders.isLoading) {
+    return <Loading />;
+  } else if (item.leaders.errMess) {
+    return <h4>{item.leaders.errMess}</h4>;
+  } else {
+    return item.leaders.leaders.map(leader => {
+      return (
+        <Media key={leader.id}>
+          <Media className="mr-5" href="#">
+            <Media
+              object
+              src={baseUrl + leader.image}
+              alt="Generic placeholder image"
+            />
+          </Media>
+          <Media body>
+            <Media heading>{leader.name}</Media>
+            <p>{leader.designation}</p>
+            {leader.description}
+          </Media>
         </Media>
-        <Media body>
-          <Media heading>{leader.name}</Media>
-          <p>{leader.designation}</p>
-          {leader.description}
-        </Media>
-      </Media>
-    );
-  });
-
-  return <div>{leaders}</div>;
+      );
+    });
+  }
 }
 
 function About(props) {
@@ -105,7 +115,7 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <RenderLeader props={props} />
+          <RenderLeader item={props} />
         </div>
       </div>
     </div>
