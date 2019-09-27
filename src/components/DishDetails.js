@@ -32,7 +32,7 @@ function RenderDish({ dish }) {
         transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
       >
         <Card>
-          <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+          <CardImg top src={dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>

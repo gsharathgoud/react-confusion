@@ -27,7 +27,7 @@ function RenderLeader({ item }) {
                 <Media className="mr-5" href="#">
                   <Media
                     object
-                    src={baseUrl + leader.image}
+                    src={leader.image}
                     alt="Generic placeholder image"
                   />
                 </Media>
