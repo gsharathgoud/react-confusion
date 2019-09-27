@@ -2,11 +2,13 @@
   "name": "confusion",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gsharathgoud.github.io/react-confusion",
   "dependencies": {
     "bootstrap": "4.0.0",
     "bootstrap-social": "5.1.1",
     "cross-fetch": "2.1.0",
     "font-awesome": "4.7.0",
+    "gh-pages": "^2.1.1",
     "prop-types": "15.6.0",
     "react": "^16.9.0",
     "react-animation-components": "3.0.0",
@@ -24,6 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
