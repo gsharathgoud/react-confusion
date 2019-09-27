@@ -141,7 +141,7 @@ class Main extends Component {
                   />
                 )}
               />
-              <Redirect to="/react-confusion" />
+              <Redirect to="/home" />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
