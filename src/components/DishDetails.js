@@ -29,7 +29,7 @@ function RenderDish({ dish }) {
     <div className="col-12 col-md-5 mt-1">
       <FadeTransform
         in
-        transfromProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
+        transformProps={{ exitTransform: "scale(0.5) translateY(-50%)" }}
       >
         <Card>
           <CardImg top src={baseUrl + dish.image} alt={dish.name} />

@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { baseUrl } from "../shared/baseUrl";
 import Loading from "./Loading";
+import { Fade, Stagger } from "react-animation-components";
 
 function RenderLeader({ item }) {
   if (item.leaders.isLoading) {
@@ -17,24 +18,30 @@ function RenderLeader({ item }) {
   } else if (item.leaders.errMess) {
     return <h4>{item.leaders.errMess}</h4>;
   } else {
-    return item.leaders.leaders.map(leader => {
-      return (
-        <Media key={leader.id}>
-          <Media className="mr-5" href="#">
-            <Media
-              object
-              src={baseUrl + leader.image}
-              alt="Generic placeholder image"
-            />
-          </Media>
-          <Media body>
-            <Media heading>{leader.name}</Media>
-            <p>{leader.designation}</p>
-            {leader.description}
-          </Media>
-        </Media>
-      );
-    });
+    return (
+      <Stagger in>
+        {item.leaders.leaders.map(leader => {
+          return (
+            <Fade in>
+              <Media key={leader.id}>
+                <Media className="mr-5" href="#">
+                  <Media
+                    object
+                    src={baseUrl + leader.image}
+                    alt="Generic placeholder image"
+                  />
+                </Media>
+                <Media body>
+                  <Media heading>{leader.name}</Media>
+                  <p>{leader.designation}</p>
+                  {leader.description}
+                </Media>
+              </Media>
+            </Fade>
+          );
+        })}
+      </Stagger>
+    );
   }
 }
 
